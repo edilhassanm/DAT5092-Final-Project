@@ -1,7 +1,8 @@
+
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd 
-
+import seaborn as sns
 
 # Assigning the file paths to their variables
 earnings = r"C:\Users\edilh\OneDrive\earnings1.xlsx"
@@ -37,8 +38,26 @@ plt.plot(df_earnings.columns[1:], df_earnings.iloc[0, 1:], label='Earning below 
 # Add a title and appropriate labels
 plt.xlabel('Year')
 plt.ylabel('Number of People')
-plt.title('Rates of Insecure Employment Compared to Rates of Earning below London Living Wage(LLW)')
+plt.title('Figure 1. Rates of Insecure Employment Compared to Rates of Earning below London Living Wage(LLW)')
 plt.legend()
 plt.grid(True) # This line adds grid lines to the visualisation
+plt.show()
+
+# The following code plots the changes in the LLw between 2015 and 2023 
+
+#Reading the data from the file
+file_path = "C:\Users\edilh\OneDrive\full_earnings_data.xlsx"
+
+data = pd.read_excel(file_path)
+
+#Extracts the first row from the data
+years = data.columns[1:]
+london_living_wage = data.iloc[0, 1:].astype(float)
+
+plt.plot(years, london_living_wage, marker='o',color= 'purple')
+plt.title('Figure 2. Changes in the London Living Wage Over the Years')
+plt.xlabel('Year')
+plt.ylabel('London Living Wage (£)')
+plt.grid(True)
 plt.show()
 
