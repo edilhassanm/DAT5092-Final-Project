@@ -46,7 +46,7 @@ plt.show()
 # The following code plots the changes in the LLw between 2015 and 2023 
 
 #Reading the data from the file
-file_path = "C:\Users\edilh\OneDrive\full_earnings_data.xlsx"
+file_path = r"C:\Users\edilh\OneDrive\full_earnings_data.xlsx"
 
 data = pd.read_excel(file_path)
 
@@ -61,3 +61,22 @@ plt.ylabel('London Living Wage (£)')
 plt.grid(True)
 plt.show()
 
+# The following code plots the number of Individuals earning below London Living Wage in each area of London
+file_path = r"C:\Users\edilh\OneDrive\full_earnings_data.xlsx"
+df = pd.read_excel(file_path)
+
+print(df.columns)
+plt.figure(figsize=(12, 8))
+
+# Plotting only for the year 2022
+sns.pointplot(data=df[:36], x='Area name', y=2022, color='purple', markers='o', label='2022') 
+
+
+plt.xlabel('Area')
+plt.ylabel('Number of Individuals Earning Below Living Wage')
+plt.title('Figure 3. Number of Individuals Earning Below Living Wage in Each Area of London in 2022')
+plt.xticks(rotation=45, ha='right')  # Rotate x-axis labels for better readability
+plt.legend(title='Year', bbox_to_anchor=(1.05, 1), loc='upper left')
+
+plt.tight_layout() # this line adjusts the subplot parameters to fit the area
+plt.show()
